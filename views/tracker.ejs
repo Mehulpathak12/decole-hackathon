@@ -1,11 +1,9 @@
 <%- include("partials/header", { title: "Water Usage Tracker — SaveWater" }) %>
 
-<!-- Hero -->
 <section class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
     <div class="grid md:grid-cols-2 gap-8 items-center">
       
-      <!-- Hero text -->
       <div>
         <span class="inline-flex items-center gap-2 bg-white/15 px-3 py-1 rounded-full ring-1 ring-white/30">
           Track Your Usage
@@ -13,7 +11,6 @@
         <h1 class="mt-3 text-4xl font-extrabold leading-tight">Daily Water Tracker</h1>
         <p class="mt-2 text-white/90">
           Log household, school, or industrial water usage and watch progress over time.
-          Data is stored locally for this demo.
         </p>
         <div class="mt-4 flex gap-3">
           <a href="/tips" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-blue-700 font-semibold hover:translate-y-[-2px] transition">
@@ -25,7 +22,6 @@
         </div>
       </div>
 
-      <!-- Hero graphic -->
       <div class="justify-self-center">
         <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur-lg flex items-center justify-center shadow-2xl">
           <div class="text-center">
@@ -40,7 +36,7 @@
   </div>
 </section>
 
-<!-- Dashboard cards -->
+
 <section class="py-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,19 +46,15 @@
         <div id="metric-today" class="text-3xl font-extrabold text-slate-900">0 L</div>
       </div>
 
-      <!-- Last 7 days -->
       <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
         <div class="text-slate-500 text-sm">Last 7 Days</div>
         <div id="metric-week" class="text-3xl font-extrabold text-slate-900">0 L</div>
       </div>
 
-      <!-- Entries -->
       <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
         <div class="text-slate-500 text-sm">Entries</div>
         <div id="metric-entries" class="text-3xl font-extrabold text-slate-900">0</div>
       </div>
-
-      <!-- Average per day -->
       <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
         <div class="text-slate-500 text-sm">Avg / Day (7d)</div>
         <div id="metric-avg" class="text-3xl font-extrabold text-slate-900">0 L</div>
@@ -71,11 +63,11 @@
   </div>
 </section>
 
-<!-- Form + Chart/Table -->
+
 <section class="pb-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-3">
 
-    <!-- Form -->
+
     <div class="lg:col-span-1">
       <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
         <h2 class="text-xl font-bold text-slate-900">Log Water Usage</h2>
@@ -83,15 +75,12 @@
           All values in liters (L). For demo, data is local only.
         </p>
 
-        <!-- Tracker form -->
         <form id="tracker-form" class="mt-5 space-y-4">
-          <!-- Date -->
           <div>
             <label class="block text-sm font-medium text-slate-700">Date</label>
             <input id="date" type="date" class="mt-1 w-full rounded-lg border px-3 py-2" required>
           </div>
-
-          <!-- Category -->
+=
           <div>
             <label class="block text-sm font-medium text-slate-700">Category</label>
             <select id="category" class="mt-1 w-full rounded-lg border px-3 py-2" required>
@@ -106,21 +95,21 @@
             </select>
           </div>
 
-          <!-- Quantity -->
+       =
           <div>
             <label class="block text-sm font-medium text-slate-700">Quantity (L)</label>
             <input id="quantity" type="number" min="0" step="0.1" placeholder="e.g., 25"
                    class="mt-1 w-full rounded-lg border px-3 py-2" required>
           </div>
 
-          <!-- Notes -->
+        
           <div>
             <label class="block text-sm font-medium text-slate-700">Notes</label>
             <textarea id="notes" rows="3" placeholder="Optional details"
                       class="mt-1 w-full rounded-lg border px-3 py-2"></textarea>
           </div>
 
-          <!-- Form buttons -->
+          
           <div class="flex items-center gap-3">
             <button type="submit"
                     class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700">
@@ -135,7 +124,7 @@
           <input type="hidden" id="edit-id">
         </form>
 
-        <!-- Import/Export -->
+        
         <div class="mt-6 border-t pt-5">
           <div class="flex flex-wrap gap-3">
             <button id="export-btn"
@@ -155,10 +144,9 @@
       </div>
     </div>
 
-    <!-- Chart + Table -->
+    
     <div class="lg:col-span-2 space-y-6">
 
-      <!-- Chart -->
       <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
         <div class="flex items-center justify-between">
           <h2 class="text-xl font-bold text-slate-900">Last 7 Days</h2>
@@ -168,7 +156,6 @@
         <div id="chart-labels" class="mt-3 grid grid-cols-7 text-center text-xs text-slate-500"></div>
       </div>
 
-      <!-- Data table -->
       <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
         <div class="flex items-center justify-between">
           <h2 class="text-xl font-bold text-slate-900">Entries</h2>
@@ -195,7 +182,6 @@
           </table>
         </div>
 
-        <!-- Pagination -->
         <div class="mt-4 flex items-center justify-between">
           <div class="text-sm text-slate-600">
             <span id="count">0</span> items - Page <span id="page">1</span>
