@@ -1,0 +1,113 @@
+<%- include("partials/header", { title: "Gallery — SaveWater" }) %>
+
+<!-- Hero -->
+<section class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      
+      <!-- Hero Left -->
+      <div>
+        <span class="inline-flex items-center gap-2 bg-white/15 px-3 py-1 rounded-full ring-1 ring-white/30">
+          Project Gallery
+        </span>
+        <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
+          Conservation in Action
+        </h1>
+        <p class="mt-2 text-white/90 text-lg">
+          A lightweight, responsive grid of photos from homes, schools, and industries—no JavaScript needed.
+        </p>
+      </div>
+
+      <!-- Hero Right -->
+      <div class="justify-self-center">
+        <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur-lg flex items-center justify-center shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-2">📷</div>
+            <div class="text-sm uppercase tracking-wide text-white/80">Simple & Fast</div>
+            <div class="text-2xl font-bold">Pure CSS</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<br><br>
+<!-- Responsive Gallery Grid -->
+<section class="pb-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/household-1.jpg" alt="Low-flow showerhead installation reducing shower water" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Low-flow Showerhead</h3>
+          <p class="text-sm text-slate-600">Apartment retrofit saving ~30% shower water.</p>
+          <p class="mt-1 text-xs text-slate-500">Household</p>
+        </figcaption>
+      </figure>
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/household-2.jpg" alt="Rain barrel connected to roof gutters" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Rain Barrel</h3>
+          <p class="text-sm text-slate-600">Harvesting rainwater for gardens and washing.</p>
+          <p class="mt-1 text-xs text-slate-500">Household</p>
+        </figcaption>
+      </figure>
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/school-1.jpg" alt="Students fixing a leaking tap as part of a campus audit" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Leak Detective Drive</h3>
+          <p class="text-sm text-slate-600">School teams audit and fix leaks campus-wide.</p>
+          <p class="mt-1 text-xs text-slate-500">School</p>
+        </figcaption>
+      </figure>
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/industrial-1.jpg" alt="Process water recycling unit in an industrial plant" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Process Water Reuse</h3>
+          <p class="text-sm text-slate-600">Closed-loop system reduces freshwater intake.</p>
+          <p class="mt-1 text-xs text-slate-500">Industrial</p>
+        </figcaption>
+      </figure>
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/nature-1.jpg" alt="Wetland restoration area that recharges aquifers" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Wetland Restoration</h3>
+          <p class="text-sm text-slate-600">Natural sponges that recharge aquifers and rivers.</p>
+          <p class="mt-1 text-xs text-slate-500">Nature</p>
+        </figcaption>
+      </figure>
+
+      <!-- Item -->
+      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
+        <img src="/images/gallery/school-2.jpg" alt="Poster competition promoting water-wise habits" loading="lazy"
+             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
+        <figcaption class="p-4">
+          <h3 class="font-semibold">Poster Campaign</h3>
+          <p class="text-sm text-slate-600">Students promote water-wise habits through art.</p>
+          <p class="mt-1 text-xs text-slate-500">School</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<%- include("partials/footer") %>

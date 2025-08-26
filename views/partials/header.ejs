@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title || "SaveWater" %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+    .float { animation: float 5s ease-in-out infinite; }
+    .hero-gradient { background: radial-gradient(1200px 600px at 10% 10%, rgba(59,130,246,.25), transparent 60%), radial-gradient(1000px 500px at 90% 20%, rgba(16,185,129,.2), transparent 60%), linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #059669 100%); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+  <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/50 border-b border-white/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold">
+        <span class="text-2xl">💧</span>
+        <span>SaveWater</span>
+      </a>
+      <button class="md:hidden p-2 rounded hover:bg-white/60" onclick="toggleMobileMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <ul class="hidden md:flex items-center gap-6">
+        <li><a href="/" class="nav-link text-slate-700 hover:text-slate-900">Home</a></li>
+        <li><a href="/about" class="nav-link text-slate-700 hover:text-slate-900">About</a></li>
+        <li><a href="/tips" class="nav-link text-slate-700 hover:text-slate-900">Tips</a></li>
+        <li><a href="/tracker" class="nav-link text-slate-700 hover:text-slate-900">Tracker</a></li>
+        <li><a href="/gallery" class="nav-link text-slate-700 hover:text-slate-900">Gallery</a></li>
+        <li><a href="/contact" class="nav-link text-slate-700 hover:text-slate-900">Contact</a></li>
+      </ul>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-3 space-y-1">
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/">Home</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/about">About</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/tips">Tips</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/tracker">Tracker</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/gallery">Gallery</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/contact">Contact</a>
+    </div>
+  </nav>
+  <main class="flex-grow">
+  <script>
+    function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('hidden'); }
+    // Active link highlight
+    (function(){
+      const path = window.location.pathname;
+      document.querySelectorAll('.nav-link').forEach(a=>{
+        if(a.getAttribute('href')===path){ a.classList.add('text-blue-700','font-semibold'); }
+      });
+    })();
+  </script>

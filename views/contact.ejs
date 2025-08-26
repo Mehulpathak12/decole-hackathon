@@ -1,0 +1,140 @@
+<%- include("partials/header", { title: "Contact — SaveWater" }) %>
+
+<!-- Hero -->
+<section class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      
+      <!-- Hero Text -->
+      <div>
+        <span class="inline-flex items-center gap-2 bg-white/15 px-3 py-1 rounded-full ring-1 ring-white/30">
+          Get in touch
+        </span>
+        <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
+          Contact & Suggestion Box
+        </h1>
+        <p class="mt-2 text-white/90 text-lg">
+          Have feedback, ideas, or want to collaborate? Send a message—every idea helps conserve water for our communities.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="/tips" class="px-4 py-2 rounded-lg bg-white text-blue-700 font-semibold hover:translate-y-[-2px] transition">
+            See Tips
+          </a>
+          <a href="/gallery" class="px-4 py-2 rounded-lg ring-2 ring-white font-semibold hover:bg-white/10 transition">
+            View Gallery
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Icon -->
+      <div class="justify-self-center">
+        <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur-lg flex items-center justify-center shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-2">✉️</div>
+            <div class="text-sm uppercase tracking-wide text-white/80">Say Hello</div>
+            <div class="text-2xl font-bold">Share Ideas</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-3">
+
+    <!-- Left Side: Contact Form -->
+    <div class="lg:col-span-2">
+      <div class="rounded-2xl bg-white p-6 md:p-8 ring-1 ring-slate-200 shadow">
+        <h2 class="text-xl font-bold text-slate-900">Send a Message</h2>
+        <p class="text-slate-600 text-sm mt-1">
+          Messages are sent via email in this demo. For production, keep credentials in environment variables.
+        </p>
+
+        <!-- Success Message -->
+        <% if (success) { %>
+          <div class="mt-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3">
+            <%= success %>
+          </div>
+        <% } %>
+
+        <!-- Error Messages -->
+        <% if (errors && errors.length > 0) { %>
+          <div class="mt-4 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3">
+            <ul class="list-disc list-inside space-y-1">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Form -->
+        <form action="/contact" method="post" class="mt-6 grid gap-5 sm:grid-cols-2">
+          
+          <!-- Name -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Name</label>
+            <input name="name" type="text" value="<%= (oldInput && oldInput.name) || '' %>" required
+              class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Email</label>
+            <input name="email" type="email" value="<%= (oldInput && oldInput.email) || '' %>" required
+              class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <!-- Message -->
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-slate-700">Message</label>
+            <textarea name="message" rows="6" required
+              class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><%= (oldInput && oldInput.message) || '' %></textarea>
+          </div>
+
+          <!-- Buttons -->
+          <div class="sm:col-span-2 flex flex-wrap gap-3">
+            <button type="submit"
+              class="px-5 py-2.5 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+              Send Suggestion
+            </button>
+            <button type="reset"
+              class="px-5 py-2.5 rounded-lg ring-1 ring-slate-300 font-semibold hover:bg-slate-50 transition">
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Side: Info Section -->
+    <aside class="lg:col-span-1 space-y-6">
+      
+      <!-- Contact Details -->
+      <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
+        <h3 class="font-semibold text-slate-900">Contact Details</h3>
+        <ul class="mt-3 space-y-2 text-slate-700">
+          <li class="flex gap-2"><span class="text-xl">📧</span><span>support@savewater.example</span></li>
+          <li class="flex gap-2"><span class="text-xl">🌐</span><span>savewater.local</span></li>
+          <li class="flex gap-2"><span class="text-xl">🕓</span><span>Mon–Fri · 9:00–17:00 IST</span></li>
+        </ul>
+      </div>
+
+      <!-- Why Reach Out -->
+      <div class="rounded-2xl bg-gradient-to-br from-blue-50 to-emerald-50 p-6 ring-1 ring-slate-200 shadow">
+        <h3 class="font-semibold text-slate-900">Why reach out?</h3>
+        <ul class="mt-3 space-y-2 text-slate-700">
+          <li class="flex gap-2"><span class="text-emerald-600">- </span><span>Share conservation ideas or case studies</span></li>
+          <li class="flex gap-2"><span class="text-emerald-600">- </span><span>Run a school or community challenge</span></li>
+          <li class="flex gap-2"><span class="text-emerald-600">- </span><span>Partner for industrial audits and reuse</span></li>
+        </ul>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,491 @@
+<%- include("partials/header", { title: "Water Usage Tracker — SaveWater" }) %>
+
+<!-- Hero -->
+<section class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      
+      <!-- Hero text -->
+      <div>
+        <span class="inline-flex items-center gap-2 bg-white/15 px-3 py-1 rounded-full ring-1 ring-white/30">
+          Track Your Usage
+        </span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight">Daily Water Tracker</h1>
+        <p class="mt-2 text-white/90">
+          Log household, school, or industrial water usage and watch progress over time.
+          Data is stored locally for this demo.
+        </p>
+        <div class="mt-4 flex gap-3">
+          <a href="/tips" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-blue-700 font-semibold hover:translate-y-[-2px] transition">
+            See Tips
+          </a>
+          <a href="/gallery" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg ring-2 ring-white font-semibold hover:bg-white/10 transition">
+            View Gallery
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero graphic -->
+      <div class="justify-self-center">
+        <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur-lg flex items-center justify-center shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-2">📊</div>
+            <div class="text-sm uppercase tracking-wide text-white/80">Log Daily</div>
+            <div class="text-2xl font-bold">Track Progress</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard cards -->
+<section class="py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Today’s total -->
+      <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
+        <div class="text-slate-500 text-sm">Today’s Total</div>
+        <div id="metric-today" class="text-3xl font-extrabold text-slate-900">0 L</div>
+      </div>
+
+      <!-- Last 7 days -->
+      <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
+        <div class="text-slate-500 text-sm">Last 7 Days</div>
+        <div id="metric-week" class="text-3xl font-extrabold text-slate-900">0 L</div>
+      </div>
+
+      <!-- Entries -->
+      <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
+        <div class="text-slate-500 text-sm">Entries</div>
+        <div id="metric-entries" class="text-3xl font-extrabold text-slate-900">0</div>
+      </div>
+
+      <!-- Average per day -->
+      <div class="rounded-2xl bg-white p-5 ring-1 ring-slate-200 shadow">
+        <div class="text-slate-500 text-sm">Avg / Day (7d)</div>
+        <div id="metric-avg" class="text-3xl font-extrabold text-slate-900">0 L</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Form + Chart/Table -->
+<section class="pb-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-3">
+
+    <!-- Form -->
+    <div class="lg:col-span-1">
+      <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
+        <h2 class="text-xl font-bold text-slate-900">Log Water Usage</h2>
+        <p class="text-slate-600 text-sm mt-1">
+          All values in liters (L). For demo, data is local only.
+        </p>
+
+        <!-- Tracker form -->
+        <form id="tracker-form" class="mt-5 space-y-4">
+          <!-- Date -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Date</label>
+            <input id="date" type="date" class="mt-1 w-full rounded-lg border px-3 py-2" required>
+          </div>
+
+          <!-- Category -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Category</label>
+            <select id="category" class="mt-1 w-full rounded-lg border px-3 py-2" required>
+              <option value="">Select</option>
+              <option>Household</option>
+              <option>School</option>
+              <option>Industrial</option>
+              <option>Garden</option>
+              <option>Drinking/Cooking</option>
+              <option>Cleaning</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Quantity -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Quantity (L)</label>
+            <input id="quantity" type="number" min="0" step="0.1" placeholder="e.g., 25"
+                   class="mt-1 w-full rounded-lg border px-3 py-2" required>
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Optional details"
+                      class="mt-1 w-full rounded-lg border px-3 py-2"></textarea>
+          </div>
+
+          <!-- Form buttons -->
+          <div class="flex items-center gap-3">
+            <button type="submit"
+                    class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700">
+              Save Entry
+            </button>
+            <button type="button" id="reset-btn"
+                    class="px-4 py-2 rounded-lg ring-1 ring-slate-300 font-semibold hover:bg-slate-50">
+              Reset Form
+            </button>
+          </div>
+
+          <input type="hidden" id="edit-id">
+        </form>
+
+        <!-- Import/Export -->
+        <div class="mt-6 border-t pt-5">
+          <div class="flex flex-wrap gap-3">
+            <button id="export-btn"
+                    class="px-3 py-2 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700">
+              Export JSON
+            </button>
+            <label class="px-3 py-2 rounded-lg ring-1 ring-slate-300 font-semibold cursor-pointer hover:bg-slate-50">
+              Import JSON
+              <input id="import-file" type="file" accept="application/json" class="hidden">
+            </label>
+            <button id="clear-btn"
+                    class="px-3 py-2 rounded-lg bg-rose-600 text-white font-semibold hover:bg-rose-700">
+              Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart + Table -->
+    <div class="lg:col-span-2 space-y-6">
+
+      <!-- Chart -->
+      <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-slate-900">Last 7 Days</h2>
+          <div class="text-sm text-slate-600">Liters per day</div>
+        </div>
+        <div id="chart" class="mt-5 grid grid-cols-7 gap-3"></div>
+        <div id="chart-labels" class="mt-3 grid grid-cols-7 text-center text-xs text-slate-500"></div>
+      </div>
+
+      <!-- Data table -->
+      <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 shadow">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-slate-900">Entries</h2>
+          <div class="flex items-center gap-2">
+            <input id="search" type="text" placeholder="Search notes or category..."
+                   class="w-56 hidden md:block rounded-lg border px-3 py-2">
+          </div>
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="text-left text-slate-600">
+              <tr>
+                <th class="py-2 pr-4">Date</th>
+                <th class="py-2 pr-4">Category</th>
+                <th class="py-2 pr-4">Quantity (L)</th>
+                <th class="py-2 pr-4">Notes</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody" class="align-top">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex items-center justify-between">
+          <div class="text-sm text-slate-600">
+            <span id="count">0</span> items - Page <span id="page">1</span>
+          </div>
+          <div class="flex gap-2">
+            <button id="prev" class="px-3 py-1 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50">Prev</button>
+            <button id="next" class="px-3 py-1 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("partials/footer") %>
+
+<script>
+    const KEY = 'sw-tracker-entries';
+    
+    /* ===== State ===== */
+    let entries = [];
+    let filtered = [];
+    let page = 1;
+    const pageSize = 6;
+    
+    /* ===== Helpers ===== */
+    const fmtDate = d => new Date(d).toISOString().slice(0, 10);
+    const todayISO = () => fmtDate(new Date());
+    
+    function load() {
+      try {
+        entries = JSON.parse(localStorage.getItem(KEY)) || [];
+      } catch {
+        entries = [];
+      }
+      filtered = [...entries];
+    }
+    
+    function save() {
+      localStorage.setItem(KEY, JSON.stringify(entries));
+    }
+    
+    function uid() {
+      return Math.random().toString(36).slice(2) + Date.now().toString(36);
+    }
+    
+    /* ===== Rendering ===== */
+    function renderMetrics() {
+      const tISO = todayISO();
+    
+      const todayTotal = entries
+        .filter(e => e.date === tISO)
+        .reduce((s, e) => s + Number(e.quantity || 0), 0);
+    
+      const last7 = [...Array(7)].map((_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - (6 - i));
+        const iso = fmtDate(d);
+        return entries
+          .filter(e => e.date === iso)
+          .reduce((s, e) => s + Number(e.quantity || 0), 0);
+      });
+    
+      const weekTotal = last7.reduce((a, b) => a + b, 0);
+      const avg = (weekTotal / 7) || 0;
+    
+      document.getElementById('metric-today').textContent = `${round(todayTotal)} L`;
+      document.getElementById('metric-week').textContent = `${round(weekTotal)} L`;
+      document.getElementById('metric-entries').textContent = entries.length;
+      document.getElementById('metric-avg').textContent = `${round(avg)} L`;
+    
+      renderChart(last7);
+    }
+    
+    function round(n) {
+      return Number(n).toFixed(n % 1 === 0 ? 0 : 1);
+    }
+    
+    function renderChart(data) {
+      const max = Math.max(10, ...data);
+      const chart = document.getElementById('chart');
+      const labels = document.getElementById('chart-labels');
+    
+      chart.innerHTML = '';
+      labels.innerHTML = '';
+    
+      const weekday = d => ['S', 'M', 'T', 'W', 'T', 'F', 'S'][new Date(d).getDay()];
+    
+      for (let i = 0; i < 7; i++) {
+        const day = new Date();
+        day.setDate(day.getDate() - (6 - i));
+    
+        const h = Math.round((data[i] / max) * 120); // bar height (max 120px)
+    
+        const bar = document.createElement('div');
+        bar.className = 'h-32 bg-slate-100 rounded flex items-end';
+        bar.innerHTML = `
+          <div class="w-full rounded-t bg-gradient-to-t from-blue-500 to-emerald-500" 
+               style="height:${h}px"></div>`;
+        chart.appendChild(bar);
+    
+        const lab = document.createElement('div');
+        lab.textContent = weekday(day);
+        labels.appendChild(lab);
+      }
+    }
+    
+    function renderTable() {
+      const tbody = document.getElementById('tbody');
+      tbody.innerHTML = '';
+    
+      const start = (page - 1) * pageSize;
+      const slice = filtered.slice(start, start + pageSize);
+    
+      slice.forEach(e => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-t';
+        tr.innerHTML = `
+          <td class="py-3 pr-4 whitespace-nowrap">${e.date}</td>
+          <td class="py-3 pr-4">${e.category}</td>
+          <td class="py-3 pr-4 font-semibold">${round(e.quantity)} L</td>
+          <td class="py-3 pr-4">${e.notes || ''}</td>
+          <td class="py-3">
+            <button class="text-blue-600 hover:underline mr-3" data-act="edit" data-id="${e.id}">Edit</button>
+            <button class="text-rose-600 hover:underline" data-act="del" data-id="${e.id}">Delete</button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    
+      document.getElementById('count').textContent = filtered.length;
+      document.getElementById('page').textContent = page;
+    }
+    
+    /* ===== Events ===== */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set default date
+      document.getElementById('date').value = todayISO();
+    
+      load();
+      renderMetrics();
+      renderTable();
+    
+      /* --- Form Submit --- */
+      document.getElementById('tracker-form').addEventListener('submit', ev => {
+        ev.preventDefault();
+    
+        const id = document.getElementById('edit-id').value || uid();
+        const entry = {
+          id,
+          date: document.getElementById('date').value,
+          category: document.getElementById('category').value,
+          quantity: Number(document.getElementById('quantity').value),
+          notes: document.getElementById('notes').value.trim()
+        };
+    
+        // Validation
+        if (!entry.date || !entry.category || isNaN(entry.quantity)) {
+          return;
+        }
+    
+        const idx = entries.findIndex(x => x.id === id);
+        if (idx >= 0) {
+          entries[idx] = entry;
+        } else {
+          entries.unshift(entry); // newest first
+        }
+    
+        save();
+    
+        // Reset form
+        document.getElementById('edit-id').value = '';
+        document.getElementById('tracker-form').reset();
+        document.getElementById('date').value = todayISO();
+    
+        load();
+        filtered = [...entries];
+        page = 1;
+        renderMetrics();
+        renderTable();
+      });
+    
+      /* --- Reset Form --- */
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        document.getElementById('edit-id').value = '';
+        document.getElementById('tracker-form').reset();
+        document.getElementById('date').value = todayISO();
+      });
+    
+      /* --- Table Actions --- */
+      document.getElementById('tbody').addEventListener('click', e => {
+        const act = e.target.dataset.act;
+        const id = e.target.dataset.id;
+        if (!act || !id) return;
+    
+        if (act === 'del') {
+          entries = entries.filter(x => x.id !== id);
+          save();
+          load();
+          filtered = [...entries];
+          renderMetrics();
+          renderTable();
+        }
+    
+        if (act === 'edit') {
+          const x = entries.find(x => x.id === id);
+          if (!x) return;
+          document.getElementById('edit-id').value = x.id;
+          document.getElementById('date').value = x.date;
+          document.getElementById('category').value = x.category;
+          document.getElementById('quantity').value = x.quantity;
+          document.getElementById('notes').value = x.notes || '';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    
+      /* --- Search --- */
+      document.getElementById('search').addEventListener('input', e => {
+        const q = e.target.value.toLowerCase();
+        filtered = entries.filter(x =>
+          (x.notes || '').toLowerCase().includes(q) ||
+          (x.category || '').toLowerCase().includes(q)
+        );
+        page = 1;
+        renderTable();
+      });
+    
+      /* --- Pagination --- */
+      document.getElementById('prev').addEventListener('click', () => {
+        if (page > 1) {
+          page--;
+          renderTable();
+        }
+      });
+    
+      document.getElementById('next').addEventListener('click', () => {
+        if (page * pageSize < filtered.length) {
+          page++;
+          renderTable();
+        }
+      });
+    
+      /* --- Export --- */
+      document.getElementById('export-btn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(entries, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'savewater-tracker.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+    
+      /* --- Import --- */
+      document.getElementById('import-file').addEventListener('change', async ev => {
+        const file = ev.target.files?.[0];
+        if (!file) return;
+    
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+    
+          if (Array.isArray(data)) {
+            entries = data
+              .filter(x => x && x.id && x.date && x.category && typeof x.quantity === 'number')
+              .sort((a, b) => new Date(b.date) - new Date(a.date)); // newest first
+    
+            save();
+            load();
+            filtered = [...entries];
+            page = 1;
+            renderMetrics();
+            renderTable();
+          }
+        } catch (err) {
+          console.error('Import failed', err);
+        }
+    
+        ev.target.value = '';
+      });
+    
+      /* --- Clear All --- */
+      document.getElementById('clear-btn').addEventListener('click', () => {
+        if (confirm('Clear all entries?')) {
+          localStorage.removeItem(KEY);
+          load();
+          filtered = [...entries];
+          page = 1;
+          renderMetrics();
+          renderTable();
+        }
+      });
+    });
+    </script>
+    
