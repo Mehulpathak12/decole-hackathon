@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><%= title || "SaveWater" %></title>
+  <title><%= title || "Water Conservation" %></title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
@@ -12,41 +12,59 @@
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
-  <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/50 border-b border-white/40">
+  <nav id="navbar" class="sticky top-0 z-50 backdrop-blur-lg bg-white/20 border-b border-white/20 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-xl font-bold">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold transition-transform duration-300 hover:scale-105">
         <span class="text-2xl">💧</span>
-        <span>SaveWater</span>
+        <span>Let's Save Water</span>
       </a>
-      <button class="md:hidden p-2 rounded hover:bg-white/60" onclick="toggleMobileMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden p-2 rounded hover:bg-white/40 transition-transform duration-300 hover:scale-110" onclick="toggleMobileMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
       </button>
       <ul class="hidden md:flex items-center gap-6">
-        <li><a href="/" class="nav-link text-slate-700 hover:text-slate-900">Home</a></li>
-        <li><a href="/about" class="nav-link text-slate-700 hover:text-slate-900">About</a></li>
-        <li><a href="/tips" class="nav-link text-slate-700 hover:text-slate-900">Tips</a></li>
-        <li><a href="/tracker" class="nav-link text-slate-700 hover:text-slate-900">Tracker</a></li>
-        <li><a href="/gallery" class="nav-link text-slate-700 hover:text-slate-900">Gallery</a></li>
-        <li><a href="/contact" class="nav-link text-slate-700 hover:text-slate-900">Contact</a></li>
+        <li><a href="/" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">Home</a></li>
+        <li><a href="/about" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">About</a></li>
+        <li><a href="/tips" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">Tips</a></li>
+        <li><a href="/tracker" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">Tracker</a></li>
+        <li><a href="/gallery" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">Gallery</a></li>
+        <li><a href="/contact" class="nav-link text-slate-700 hover:text-xl hover:underline transition-all duration-200">Contact</a></li>
       </ul>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden px-4 pb-3 space-y-1">
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/">Home</a>
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/about">About</a>
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/tips">Tips</a>
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/tracker">Tracker</a>
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/gallery">Gallery</a>
-      <a class="block px-3 py-2 rounded hover:bg-white/60" href="/contact">Contact</a>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-3 space-y-1 bg-white/10 backdrop-blur-md rounded-b-lg">
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/">Home</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/about">About</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/tips">Tips</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/tracker">Tracker</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/gallery">Gallery</a>
+      <a class="block px-3 py-2 rounded hover:bg-white/30 transition-all" href="/contact">Contact</a>
     </div>
   </nav>
-  <main class="flex-grow">
+  
   <script>
-    function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('hidden'); }
-    // Active link highlight
+    function toggleMobileMenu(){
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+  
+    // Highlight active link
     (function(){
       const path = window.location.pathname;
       document.querySelectorAll('.nav-link').forEach(a=>{
-        if(a.getAttribute('href')===path){ a.classList.add('text-blue-700','font-semibold'); }
+        if(a.getAttribute('href')===path){
+          a.classList.add('text-blue-700','font-semibold');
+        }
       });
     })();
+  
+    // Add shadow on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if(window.scrollY > 10){
+        nav.classList.add('shadow-lg','bg-white/30','backdrop-blur-xl');
+      } else {
+        nav.classList.remove('shadow-lg','bg-white/30','backdrop-blur-xl');
+      }
+    });
   </script>
+  
