@@ -1,79 +1,92 @@
 <%- include("partials/header", { title: "Gallery — SaveWater" }) %>
-<!-- Responsive Gallery Grid -->
- <br><br>
-<section class="pb-14">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/zh1wwhnb/0050832-low-flow-shower-heads-featured.jpg" alt="Low-flow showerhead installation reducing shower water" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Low-flow Showerhead</h3>
-          <p class="text-sm text-slate-600">Apartment retrofit saving ~30% shower water.</p>
-          <p class="mt-1 text-xs text-slate-500">Household</p>
-        </figcaption>
-      </figure>
+<section class="pb-20 pt-6 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Water Conservation Gallery</h2>
 
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/m5FkH7vK/download.jpg" alt="Rain barrel connected to roof gutters" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Rain Barrel</h3>
-          <p class="text-sm text-slate-600">Harvesting rainwater for gardens and washing.</p>
-          <p class="mt-1 text-xs text-slate-500">Household</p>
-        </figcaption>
-      </figure>
+    <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <% const images = [
+        {src: "https://cdn1.byjus.com/wp-content/uploads/2017/08/Water-Management-Water-Conservation-Methods-02-700x387.png", text: "Water Management"},
+        {src: "https://knowhow.distrelec.com/wp-content/uploads/2024/05/GettyImages-2052432827-1024x683.jpg", text: "Smart Irrigation"},
+        {src: "https://www.agritechtomorrow.com/images/upload/images/Depositphotos_6827181_s-2019.jpg", text: "Agriculture & Water"},
+        {src: "https://www.seametrics.com/wp-content/uploads/2013/03/seametrics-rain-water.jpg", text: "Rainwater Storage"},
+        {src: "https://library.homeserve.com/m/63f8aa08c775a2d6/Blog-GettyImages-180735712.jpg", text: "Save Every Drop"},
+        {src: "https://econaur.com/wp-content/uploads/2019/07/why-we-need-water-meter-Nobroker-1536x1025-1-1024x683.jpg", text: "Water Meters"},
+        {src: "https://www.rainyfilters.com/static/images/blogs/5_methods_of_water_conservation_inner2.jpg", text: "Conservation Methods"},
+        {src: "https://www.sustainablehomebrewing.club/wp-content/uploads/2024/10/water-saving-home-brewing.jpg", text: "Eco-friendly Living"},
+        {src: "https://assets-news.housing.com/news/wp-content/uploads/2021/06/14180000/A-guide-to-water-conservation-methods-and-its-importance-shutterstock_1740635204.jpg", text: "Awareness Campaign"},
+        {src: "https://static.mygov.in/media/blog/2019/12/1-1.jpg", text: "Community Efforts"},
+        {src: "https://s3.youthkiawaaz.com/wp-content/uploads/2019/05/10143648/Rain_water_harvesting.jpg", text: "Rainwater Harvesting"},
+        {src: "https://www.wwf.org.uk/sites/default/files/styles/content_slide_image/public/2020-05/C11.jpg?h=c3635fa2&itok=Gps8995T", text: "Protect Rivers"},
+        {src: "https://bloggershrutidoshi.wordpress.com/wp-content/uploads/2020/07/13-rain-water.jpg?w=564", text: "Store Rainwater"},
+        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRq0MycgQf6HtEp1dQ9qdhJveaLCprlPbvEQ&s", text: "Modern Tech"},
+        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3gSz-m-eCYsKJSDKAjX195krkQO_-sfGPCQ&s", text: "Rainwater Approaches"},
+        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmrji9Ev47X5UJQVCoC49AX4SfTlIuNUPOBQ&s", text: "Modern Taps"},
+      ]; %>
 
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/s9ZZdQ9G/gettyimages-1479422287-612x612.jpg" alt="Students fixing a leaking tap as part of a campus audit" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Leak Detective Drive</h3>
-          <p class="text-sm text-slate-600">School teams audit and fix leaks campus-wide.</p>
-          <p class="mt-1 text-xs text-slate-500">School</p>
-        </figcaption>
-      </figure>
-
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/4gNxTq7k/istockphoto-531705904-612x612.jpg" alt="Process water recycling unit in an industrial plant" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Process Water Reuse</h3>
-          <p class="text-sm text-slate-600">Closed-loop system reduces freshwater intake.</p>
-          <p class="mt-1 text-xs text-slate-500">Industrial</p>
-        </figcaption>
-      </figure>
-
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/Y76y1ZpW/download.jpg" alt="Wetland restoration area that recharges aquifers" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Wetland Restoration</h3>
-          <p class="text-sm text-slate-600">Natural sponges that recharge aquifers and rivers.</p>
-          <p class="mt-1 text-xs text-slate-500">Nature</p>
-        </figcaption>
-      </figure>
-
-      <!-- Item -->
-      <figure class="group overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow">
-        <img src="https://i.ibb.co/FL5j3LSq/ando.jpg" alt="Poster competition promoting water-wise habits" loading="lazy"
-             class="h-60 w-full object-cover transition duration-300 group-hover:scale-[1.03]">
-        <figcaption class="p-4">
-          <h3 class="font-semibold">Poster Campaign</h3>
-          <p class="text-sm text-slate-600">Students promote water-wise habits through art.</p>
-          <p class="mt-1 text-xs text-slate-500">School</p>
-        </figcaption>
-      </figure>
-
+      <% images.forEach(img => { %>
+      <div class="relative cursor-pointer overflow-hidden rounded-xl shadow-lg gallery-item" data-src="<%= img.src %>" data-caption="<%= img.text %>">
+        <img src="<%= img.src %>" alt="gallery" 
+          class="w-full h-56 object-cover transform transition-transform duration-500 hover:scale-110">
+        
+        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-500">
+          <span class="text-white text-lg font-semibold translate-y-5 hover:translate-y-0 transition duration-500"><%= img.text %></span>
+        </div>
+      </div>
+      <% }) %>
     </div>
   </div>
 </section>
+
+<div id="galleryCard" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 p-6 relative animate-fadeIn">
+
+    <button id="closeCard" class="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl">&times;</button>
+    
+
+    <img id="cardImg" src="" alt="" class="rounded-xl w-full max-h-[60vh] object-contain mb-4">
+
+    <h3 id="cardCaption" class="text-lg font-semibold text-gray-800 text-center"></h3>
+  </div>
+</div>
+<style>
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+</style>
+
+<script>
+  const galleryCard = document.getElementById("galleryCard");
+  const cardImg = document.getElementById("cardImg");
+  const cardCaption = document.getElementById("cardCaption");
+  const closeCard = document.getElementById("closeCard");
+
+  document.querySelectorAll(".gallery-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const src = item.getAttribute("data-src");
+      const caption = item.getAttribute("data-caption");
+      cardImg.src = src;
+      cardCaption.textContent = caption;
+      galleryCard.classList.remove("hidden");
+      galleryCard.classList.add("flex");
+    });
+  });
+
+  closeCard.addEventListener("click", () => {
+    galleryCard.classList.add("hidden");
+    galleryCard.classList.remove("flex");
+  });
+
+  galleryCard.addEventListener("click", (e) => {
+    if (e.target === galleryCard) {
+      galleryCard.classList.add("hidden");
+      galleryCard.classList.remove("flex");
+    }
+  });
+</script>
 
 <%- include("partials/footer") %>
