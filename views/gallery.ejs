@@ -4,88 +4,331 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Water Conservation Gallery</h2>
 
-    <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <!-- responsive grid: 1 / 2 / 3 / 4 columns -->
+    <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <% const images = [
-        {src: "https://cdn1.byjus.com/wp-content/uploads/2017/08/Water-Management-Water-Conservation-Methods-02-700x387.png", text: "Water Management"},
-        {src: "https://knowhow.distrelec.com/wp-content/uploads/2024/05/GettyImages-2052432827-1024x683.jpg", text: "Smart Irrigation"},
-        {src: "https://www.agritechtomorrow.com/images/upload/images/Depositphotos_6827181_s-2019.jpg", text: "Agriculture & Water"},
-        {src: "https://www.seametrics.com/wp-content/uploads/2013/03/seametrics-rain-water.jpg", text: "Rainwater Storage"},
-        {src: "https://library.homeserve.com/m/63f8aa08c775a2d6/Blog-GettyImages-180735712.jpg", text: "Save Every Drop"},
-        {src: "https://econaur.com/wp-content/uploads/2019/07/why-we-need-water-meter-Nobroker-1536x1025-1-1024x683.jpg", text: "Water Meters"},
-        {src: "https://www.rainyfilters.com/static/images/blogs/5_methods_of_water_conservation_inner2.jpg", text: "Conservation Methods"},
-        {src: "https://www.sustainablehomebrewing.club/wp-content/uploads/2024/10/water-saving-home-brewing.jpg", text: "Eco-friendly Living"},
-        {src: "https://assets-news.housing.com/news/wp-content/uploads/2021/06/14180000/A-guide-to-water-conservation-methods-and-its-importance-shutterstock_1740635204.jpg", text: "Awareness Campaign"},
-        {src: "https://static.mygov.in/media/blog/2019/12/1-1.jpg", text: "Community Efforts"},
-        {src: "https://s3.youthkiawaaz.com/wp-content/uploads/2019/05/10143648/Rain_water_harvesting.jpg", text: "Rainwater Harvesting"},
-        {src: "https://www.wwf.org.uk/sites/default/files/styles/content_slide_image/public/2020-05/C11.jpg?h=c3635fa2&itok=Gps8995T", text: "Protect Rivers"},
-        {src: "https://bloggershrutidoshi.wordpress.com/wp-content/uploads/2020/07/13-rain-water.jpg?w=564", text: "Store Rainwater"},
-        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRq0MycgQf6HtEp1dQ9qdhJveaLCprlPbvEQ&s", text: "Modern Tech"},
-        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3gSz-m-eCYsKJSDKAjX195krkQO_-sfGPCQ&s", text: "Rainwater Approaches"},
-        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmrji9Ev47X5UJQVCoC49AX4SfTlIuNUPOBQ&s", text: "Modern Taps"},
-      ]; %>
+  {
+    src: "https://cdn1.byjus.com/wp-content/uploads/2017/08/Water-Management-Water-Conservation-Methods-02-700x387.png",
+    text: "Water Management",
+    desc: "Water management is a practical, systems-level approach that balances supply and demand across homes, farms, and industries. It combines policy, infrastructure, and behavior change to make every litre count — from fixing leaks and improving distribution efficiency to implementing reuse and recycling strategies. Effective water management uses metering and data to identify losses, targets conservation investments where returns are highest, and blends short-term actions (like repairs and behavioural nudges) with long-term planning (like storage, groundwater recharge, and diversified supply). It also emphasizes cross-sector coordination so municipal, agricultural, and industrial users can reduce peak demand, lower energy for pumping and treatment, and increase resilience to drought and climate shifts. The goal is reliable service, lower costs, and healthier ecosystems.",
+    youtube: "https://www.youtube.com/results?search_query=water+management+conservation",
+    wiki: "https://en.wikipedia.org/wiki/Water_conservation"
+  },
+  {
+    src: "https://knowhow.distrelec.com/wp-content/uploads/2024/05/GettyImages-2052432827-1024x683.jpg",
+    text: "Smart Irrigation",
+    desc: "Smart irrigation uses sensors, controllers, and data to deliver the right amount of water at the right time to crops and landscapes. Soil-moisture probes, weather forecasts, and evapotranspiration models replace fixed schedules, avoiding overwatering and reducing evaporation losses. By tailoring irrigation to plant needs, smart systems conserve water while preserving yields and landscape health. Benefits include lower runoff, reduced fertilizer leaching, and lower energy use for pumping. Smart irrigation scales from simple timers tied to moisture sensors for home gardens to complex networked systems for farms that integrate satellite data and automated valves. Over time, these systems pay back through water and energy savings, and they make farms and green spaces more resilient to heat waves and changing rainfall patterns.",
+    youtube: "https://www.youtube.com/results?search_query=smart+irrigation",
+    wiki: "https://en.wikipedia.org/wiki/Irrigation"
+  },
+  {
+    src: "https://www.agritechtomorrow.com/images/upload/images/Depositphotos_6827181_s-2019.jpg",
+    text: "Agriculture & Water",
+    desc: "Agriculture is the largest single consumer of freshwater globally, which is why efficient farming practices are essential for long-term water security. Techniques such as drip irrigation, conservation tillage, mulching, crop rotation, and selection of drought-tolerant varieties reduce water demand without sacrificing productivity. Water budgeting and scheduling based on crop stage and measured soil moisture ensure irrigation is applied only when needed. On a landscape level, practices like contour farming, terracing, and farm ponds help capture run-off and recharge groundwater. Combining technical measures with farmer training and incentives creates rapid, cumulative savings while protecting aquifers and downstream ecosystems. The result is a productive agricultural sector that uses water more sustainably and reduces vulnerability to drought.",
+    youtube: "https://www.youtube.com/results?search_query=agriculture+water+conservation",
+    wiki: "https://en.wikipedia.org/wiki/Agricultural_water_management"
+  },
+  {
+    src: "https://www.seametrics.com/wp-content/uploads/2013/03/seametrics-rain-water.jpg",
+    text: "Rainwater Storage",
+    desc: "Rainwater storage captures runoff from roofs and surfaces and stores it for later use, reducing demand on mains supplies during dry periods. Systems range from small barrels for gardens to large cisterns and underground tanks for community or agricultural use. Properly designed storage includes first-flush diverters, screening, and simple filtration to keep water suitable for non-potable uses like irrigation, toilet flushing, and cleaning. Rainwater storage reduces stormwater runoff, lowers flood risk, and provides a reliable supplementary supply when municipal systems are stressed. When combined with smart distribution and reuse, stored rainwater increases local resilience, lowers water bills, and encourages household and community self-reliance without complex infrastructure.",
+    youtube: "https://www.youtube.com/results?search_query=rainwater+harvesting",
+    wiki: "https://en.wikipedia.org/wiki/Rainwater_harvesting"
+  },
+  {
+    src: "https://library.homeserve.com/m/63f8aa08c775a2d6/Blog-GettyImages-180735712.jpg",
+    text: "Save Every Drop",
+    desc: "Individual behaviour drives a large share of daily water use, and simple habits compound into substantial savings. Actions like taking shorter showers, turning taps off while brushing, collecting rinse water for plants, and repairing small leaks save litres every day per household. When neighbourhoods and schools adopt these practices, the collective effect reduces pressure on local supplies and treatment infrastructure. Combining personal habits with modest hardware changes — low-flow showerheads, faucet aerators, and efficient appliances — multiplies the impact. Education, clear messaging, and small incentives help embed these behaviours so they become routine. Ultimately, 'saving every drop' is both a personal ethic and a scalable strategy for resilient communities.",
+    youtube: "https://www.youtube.com/results?search_query=save+water+tips",
+    wiki: "https://en.wikipedia.org/wiki/Water_conservation#Domestic"
+  },
+  {
+    src: "https://econaur.com/wp-content/uploads/2019/07/why-we-need-water-meter-Nobroker-1536x1025-1-1024x683.jpg",
+    text: "Water Meters",
+    desc: "Water meters and sub-metering are critical tools for transparency and accountability in water use. At the household and building level, meters tie consumption to billing and encourage conservation through visibility of usage. Smart meters add real-time data and alerts for sudden spikes that indicate leaks or inefficient appliances. In commercial and industrial settings, submeters for cooling, irrigation, and process water help managers identify high-use processes and prioritize efficiency upgrades. Metering enables data-driven decision making — setting baselines, tracking improvements, and quantifying savings from conservation projects — which in turn helps utilities and customers make cost-effective investments.",
+    youtube: "https://www.youtube.com/results?search_query=water+meter+smart+meter",
+    wiki: "https://en.wikipedia.org/wiki/Water_meter"
+  },
+  {
+    src: "https://www.rainyfilters.com/static/images/blogs/5_methods_of_water_conservation_inner2.jpg",
+    text: "Conservation Methods",
+    desc: "Conservation methods form a toolkit of technical and behavioural measures that reduce demand and waste. Key elements include low-flow fixtures, efficient appliances, greywater reuse for irrigation, leak detection and repair programs, and demand management (pricing and incentives). On the supply side, investments in storage, wastewater treatment for reuse, and system leak control improve overall efficiency. Importantly, conservation combines hardware with people — nudges, feedback, and education increase uptake and ensure new equipment is used correctly. A portfolio approach tailors measures to local priorities and budgets, delivering steady reductions in water withdrawals while preserving service levels and protecting ecosystems.",
+    youtube: "https://www.youtube.com/results?search_query=methods+of+water+conservation",
+    wiki: "https://en.wikipedia.org/wiki/Water_conservation#Methods"
+  },
+  {
+    src: "https://www.sustainablehomebrewing.club/wp-content/uploads/2024/10/water-saving-home-brewing.jpg",
+    text: "Eco-friendly Living",
+    desc: "Eco-friendly living extends beyond single actions to a mindset of choosing products and routines that lower water and environmental footprints. This includes buying water-efficient appliances, choosing low-impact consumer goods, fixing leaks promptly, and reusing greywater where safe. Households can plan meals and shopping to reduce waste (and the water embedded in food), landscape with native and drought-tolerant plants, and install rainwater capture for outdoor uses. Small investments like aerators, efficient washing machines, and mindful landscaping yield recurring water and energy savings. Over time, community adoption of eco-friendly choices reduces pressure on public systems and supports broader sustainability goals.",
+    youtube: "https://www.youtube.com/results?search_query=eco+friendly+living+save+water",
+    wiki: "https://en.wikipedia.org/wiki/Sustainable_living"
+  },
+  {
+    src: "https://assets-news.housing.com/news/wp-content/uploads/2021/06/14180000/A-guide-to-water-conservation-methods-and-its-importance-shutterstock_1740635204.jpg",
+    text: "Awareness Campaign",
+    desc: "Awareness campaigns translate technical solutions into everyday practice by informing citizens about simple, high-impact changes and the reasons behind them. Effective campaigns combine clear messaging, memorable visuals, school programs, and community events to explain why conserving water matters for health, livelihoods, and local economies. They also provide practical how-tos — fixing leaks, installing low-flow fixtures, and harvesting rainwater — and share success stories to motivate action. Well-designed campaigns collaborate with utilities, NGOs, and local leaders to align incentives and provide tools like audits or starter kits. Over time, awareness builds social norms that make conservation the default behaviour.",
+    youtube: "https://www.youtube.com/results?search_query=water+conservation+awareness+campaign",
+    wiki: "https://en.wikipedia.org/wiki/Water_conservation#Public_awareness"
+  },
+  {
+    src: "https://static.mygov.in/media/blog/2019/12/1-1.jpg",
+    text: "Community Efforts",
+    desc: "Community-led actions — local audits, neighborhood rainwater projects, school challenges, and leak detection drives — turn individual intent into collective impact. When residents collaborate they can share costs for storage, organize volunteer repair crews, and advocate for municipal improvements. Community programs often include monitoring and public dashboards so achievements are visible and celebrated, creating momentum and peer learning. These efforts are especially powerful in water-stressed areas where centralized infrastructure is limited; local solutions deliver resilience and social benefits while strengthening stewardship of shared resources.",
+    youtube: "https://www.youtube.com/results?search_query=community+water+conservation",
+    wiki: "https://en.wikipedia.org/wiki/Community_water_system"
+  },
+  {
+    src: "https://s3.youthkiawaaz.com/wp-content/uploads/2019/05/10143648/Rain_water_harvesting.jpg",
+    text: "Rainwater Harvesting",
+    desc: "Rainwater harvesting captures seasonal rainfall and stores it for later use, easing demand on treated supplies and reducing runoff during storms. Systems can be scaled to suit households, apartment complexes, or farms; they include collection surfaces, gutters, filters, and storage tanks. Careful design addresses water quality and maintenance — screens, first-flush devices, and simple filtration keep stored water suitable for gardening and other non-potable uses. In many regions, wide adoption of harvesting reduces pressure on municipal networks, offers a reliable local supply during dry periods, and complements groundwater recharge efforts to sustain long-term water availability.",
+    youtube: "https://www.youtube.com/results?search_query=rainwater+harvesting+system",
+    wiki: "https://en.wikipedia.org/wiki/Rainwater_harvesting"
+  },
+  {
+    src: "https://www.wwf.org.uk/sites/default/files/styles/content_slide_image/public/2020-05/C11.jpg?h=c3635fa2&itok=Gps8995T",
+    text: "Protect Rivers",
+    desc: "Protecting rivers and wetlands is central to sustainable water management because healthy waterways support biodiversity, filter pollutants, and buffer communities against droughts and floods. Conservation actions range from preventing pollution and over-abstraction to restoring riparian vegetation and natural flow regimes. Maintaining environmental flows ensures fish, wetlands, and local livelihoods remain viable while providing downstream communities with cleaner, more reliable water. River protection often requires cross-sector planning, legal safeguards, and community engagement to balance human use with ecosystem needs for long-term resilience.",
+    youtube: "https://www.youtube.com/results?search_query=river+conservation",
+    wiki: "https://en.wikipedia.org/wiki/River_conservation"
+  },
+  {
+    src: "https://bloggershrutidoshi.wordpress.com/wp-content/uploads/2020/07/13-rain-water.jpg?w=564",
+    text: "Store Rainwater",
+    desc: "Storing rainwater at the rooftop or community scale builds resilience against supply interruptions and reduces reliance on treated water for non-potable tasks. Methods include barrels, above-ground tanks, and underground cisterns, each suited to different space constraints and volumes. Key design considerations include secure covers to prevent contamination and mosquitoes, overflow routing, and simple filtration for cleaner water. Well-maintained storage systems provide households and farms with a flexible, low-cost source for irrigation, cleaning, and livestock, and they can be integrated into larger landscape water management strategies.",
+    youtube: "https://www.youtube.com/results?search_query=rooftop+rainwater+storage",
+    wiki: "https://en.wikipedia.org/wiki/Rainwater_harvesting"
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRq0MycgQf6HtEp1dQ9qdhJveaLCprlPbvEQ&s",
+    text: "Modern Tech",
+    desc: "Modern technologies — IoT sensors, advanced metering infrastructure (AMI), and cloud analytics — give utilities and managers unprecedented visibility into water networks. Sensors detect leaks, pressure changes, and quality issues; smart meters reveal consumption patterns; analytics spot anomalies and prioritize repairs. These tools enable predictive maintenance, reduce non-revenue water, and optimize pump and treatment schedules to save energy as well as water. While initial investments vary, digital solutions often pay back through reduced losses, lower operating costs, and better service reliability, making them powerful enablers of 21st-century water management.",
+    youtube: "https://www.youtube.com/results?search_query=iot+water+management",
+    wiki: "https://en.wikipedia.org/wiki/Smart_meter"
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3gSz-m-eCYsKJSDKAjX195krkQO_-sfGPCQ&s",
+    text: "Rainwater Approaches",
+    desc: "There are many approaches to capturing and using rainwater, from simple barrels to engineered cisterns and distributed green infrastructure. Techniques such as roof-based collection, permeable pavements, rain gardens, and bioretention cells reduce runoff, recharge groundwater, and slow stormwater flows. Each approach suits different scales and contexts; for instance, barrels are low-cost for houses, while cisterns and constructed wetlands work well for community or agricultural use. Combining techniques in a catchment creates synergies — reducing flood risk, improving local water supplies, and enhancing urban or rural landscapes.",
+    youtube: "https://www.youtube.com/results?search_query=rainwater+approaches",
+    wiki: "https://en.wikipedia.org/wiki/Rainwater_harvesting#Techniques"
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmrji9Ev47X5UJQVCoC49AX4SfTlIuNUPOBQ&s",
+    text: "Modern Taps",
+    desc: "Modern tap technologies such as aerators, flow restrictors, and sensor-activated faucets reduce water use while maintaining performance and user experience. Aerators mix air into the stream to maintain pressure with lower flow, while sensors and timed faucets prevent taps being left running in public or commercial spaces. These devices are low-cost, easy to retrofit, and highly effective in high-traffic locations like schools, offices, and public restrooms. When combined with good maintenance practices and public awareness, modern taps deliver reliable water savings without inconvenience.",
+    youtube: "https://www.youtube.com/results?search_query=water+saving+tap+aerator",
+    wiki: "https://en.wikipedia.org/wiki/Tap_(valve)"
+  }
+]; %>
+  
 
       <% images.forEach(img => { %>
-      <div class="relative cursor-pointer overflow-hidden rounded-xl shadow-lg gallery-item" data-src="<%= img.src %>" data-caption="<%= img.text %>">
-        <img src="<%= img.src %>" alt="gallery" 
-          class="w-full h-56 object-cover transform transition-transform duration-500 hover:scale-110">
-        
-        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-500">
-          <span class="text-white text-lg font-semibold translate-y-5 hover:translate-y-0 transition duration-500"><%= img.text %></span>
+        <div
+          class="relative cursor-pointer overflow-hidden rounded-xl shadow-lg group gallery-item"
+          data-src="<%= img.src %>"
+          data-caption="<%= img.text %>"
+          data-desc="<%= img.desc %>"
+          data-youtube="<%= img.youtube %>"
+          data-wiki="<%= img.wiki %>"
+          role="button"
+          tabindex="0"
+          aria-label="Open <%= img.text %> details"
+        >
+          <img
+            src="<%= img.src %>"
+            alt="<%= img.text %>"
+            loading="lazy"
+            class="w-full h-44 sm:h-56 md:h-48 lg:h-56 xl:h-60 object-cover transform transition-transform duration-500 group-hover:scale-105"
+          />
+
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-lg font-semibold px-3 text-center"><%= img.text %></span>
+          </div>
+
+          <div class="p-3 bg-white">
+            <div class="text-sm font-semibold text-slate-900 line-clamp-1"><%= img.text %></div>
+            <div class="text-xs text-slate-500 mt-1 line-clamp-2"><%= img.desc %></div>
+          </div>
         </div>
-      </div>
       <% }) %>
     </div>
   </div>
 </section>
 
-<div id="galleryCard" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
-  <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 p-6 relative animate-fadeIn">
+<!-- Fixed Modal for Mobile Scrolling -->
+<div id="galleryCard" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+  <div class="modal-container w-full max-w-5xl max-h-[95vh] bg-white rounded-2xl shadow-2xl animate-fadeIn overflow-hidden">
+    <button id="closeCard" class="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl z-50 bg-white rounded-full p-1" aria-label="Close">&times;</button>
 
-    <button id="closeCard" class="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl">&times;</button>
-    
+    <!-- Mobile: Stack vertically, Desktop: Side by side -->
+    <div class="flex flex-col md:grid md:grid-cols-2 h-full max-h-[95vh]">
+      <!-- Image Section -->
+      <div class="flex-shrink-0 p-4 md:p-6 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50">
+        <div class="h-[30vh] md:h-[70vh] rounded-xl overflow-hidden bg-white flex items-center justify-center">
+          <img id="cardImg" src="" alt="" class="max-h-full max-w-full object-contain">
+        </div>
+      </div>
 
-    <img id="cardImg" src="" alt="" class="rounded-xl w-full max-h-[60vh] object-contain mb-4">
+      <!-- Content Section - Mobile Friendly -->
+      <div class="flex flex-col min-h-0 flex-1">
+        <!-- Fixed Title -->
+        <div class="flex-shrink-0 px-4 md:px-6 pt-4 md:pt-6 pb-3 border-b border-slate-200 bg-white">
+          <h3 id="cardCaption" class="text-lg md:text-xl font-semibold text-gray-900"></h3>
+        </div>
 
-    <h3 id="cardCaption" class="text-lg font-semibold text-gray-800 text-center"></h3>
+        <!-- Scrollable Description - The Key Fix -->
+        <div class="flex-1 min-h-0 overflow-y-auto px-4 md:px-6 py-4 bg-white" style="-webkit-overflow-scrolling: touch;">
+          <div id="cardDesc" class="text-sm md:text-base text-slate-700 leading-relaxed"></div>
+        </div>
+
+        <!-- Fixed Action Buttons -->
+        <div class="flex-shrink-0 px-4 md:px-6 py-4 border-t border-slate-200 bg-white">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a id="btnYoutube" href="#" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 text-sm">
+              ▶ YouTube
+            </a>
+            <a id="btnWiki" href="#" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white font-semibold hover:bg-slate-800 text-sm">
+              📚 Wikipedia
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 <style>
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.95);}
-    to {opacity: 1; transform: scale(1);}
+  @keyframes fadeIn { 
+    from { opacity: 0; transform: scale(0.98); } 
+    to { opacity: 1; transform: scale(1); } 
   }
-  .animate-fadeIn {
-    animation: fadeIn 0.3s ease-out;
+  .animate-fadeIn { 
+    animation: fadeIn 0.18s ease-out; 
+  }
+
+  /* Key Mobile Scrolling Fixes */
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 95vh;
+  }
+
+  /* Ensure proper flex behavior on mobile */
+  @media (max-width: 768px) {
+    .modal-container {
+      margin: 1rem;
+      max-height: calc(100vh - 2rem);
+    }
+    
+    /* Prevent body scroll when modal is open */
+    body.modal-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+    }
+  }
+
+  /* Smooth scrolling for iOS */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 </style>
 
 <script>
+  // Elements
   const galleryCard = document.getElementById("galleryCard");
   const cardImg = document.getElementById("cardImg");
   const cardCaption = document.getElementById("cardCaption");
+  const cardDesc = document.getElementById("cardDesc");
   const closeCard = document.getElementById("closeCard");
+  const btnYoutube = document.getElementById("btnYoutube");
+  const btnWiki = document.getElementById("btnWiki");
 
+  // Prevent body scroll when modal is open (mobile fix)
+  function preventBodyScroll() {
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  }
+
+  function allowBodyScroll() {
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+
+  // Open modal for each gallery item
   document.querySelectorAll(".gallery-item").forEach(item => {
-    item.addEventListener("click", () => {
-      const src = item.getAttribute("data-src");
-      const caption = item.getAttribute("data-caption");
+    const open = () => {
+      const src = item.getAttribute("data-src") || "";
+      const caption = item.getAttribute("data-caption") || "";
+      const desc = item.getAttribute("data-desc") || "Description not available.";
+      const youtube = item.getAttribute("data-youtube") || "https://www.youtube.com";
+      const wiki = item.getAttribute("data-wiki") || "https://en.wikipedia.org";
+
       cardImg.src = src;
+      cardImg.alt = caption || "Gallery image";
       cardCaption.textContent = caption;
+      cardDesc.textContent = desc;
+      btnYoutube.href = youtube;
+      btnWiki.href = wiki;
+
+      // Show modal and prevent body scroll
       galleryCard.classList.remove("hidden");
       galleryCard.classList.add("flex");
+      preventBodyScroll();
+
+      // Focus management
+      setTimeout(() => closeCard.focus(), 100);
+    };
+
+    item.addEventListener("click", open);
+    item.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter" || ev.key === " ") { 
+        ev.preventDefault(); 
+        open(); 
+      }
     });
   });
 
-  closeCard.addEventListener("click", () => {
+  // Close function
+  function closeModal() {
     galleryCard.classList.add("hidden");
     galleryCard.classList.remove("flex");
-  });
+    allowBodyScroll();
+    cardImg.src = "";
+  }
+
+  // Event listeners
+  closeCard.addEventListener("click", closeModal);
 
   galleryCard.addEventListener("click", (e) => {
-    if (e.target === galleryCard) {
-      galleryCard.classList.add("hidden");
-      galleryCard.classList.remove("flex");
+    if (!e.target.closest('.modal-container')) {
+      closeModal();
     }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+
+  // Handle orientation change on mobile
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      if (!galleryCard.classList.contains('hidden')) {
+        // Refresh modal layout after orientation change
+        const scrollElement = cardDesc.parentElement;
+        scrollElement.style.height = 'auto';
+        setTimeout(() => {
+          scrollElement.style.height = '';
+        }, 50);
+      }
+    }, 500);
   });
 </script>
 
